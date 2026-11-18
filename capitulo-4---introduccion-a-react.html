@@ -1,0 +1,990 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Un ejemplo cliente/servidor con React/NestJS">
+      
+      
+        <meta name="author" content="Serge Tahé">
+      
+      
+        <link rel="canonical" href="https://stahe.github.io/ales-react-nestjs-sept-2026/capitulo-4---introduccion-a-react.html">
+      
+      
+        <link rel="prev" href="capitulo-3---el-servidor-nestjs-de-la-aplicacion-rdvmedecins.html">
+      
+      
+        <link rel="next" href="capitulo-5---el-cliente-react-de-la-aplicacion-rdvmedecins.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>5. Capítulo 4 - Introducción a [React] - Un ejemplo cliente/servidor con React/NestJS</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="stylesheets/focus.css">
+    
+      <link rel="stylesheet" href="stylesheets/bidi.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBZC3JVJNR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    var siteName = "Un ejemplo cliente/servidor con React/NestJS";
+    gtag('config', 'G-EBZC3JVJNR', {
+        'page_title': siteName
+    });
+  </script>
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#5-capitulo-4-introduccion-a-react" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Un ejemplo cliente/servidor con React/NestJS" class="md-header__button md-logo" aria-label="Un ejemplo cliente/servidor con React/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Un ejemplo cliente/servidor con React/NestJS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5. Capítulo 4 - Introducción a [React]
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="purple"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://stahe.github.io/ales-react-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Un ejemplo cliente/servidor con React/NestJS" class="md-nav__button md-logo" aria-label="Un ejemplo cliente/servidor con React/NestJS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Un ejemplo cliente/servidor con React/NestJS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://stahe.github.io/ales-react-nestjs-sept-2026" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bienvenido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="introduccion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Introducción
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capitulo-1---configuracion-del-entorno-de-trabajo.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Capítulo 1 - Configuración del entorno de trabajo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capitulo-2---introduccion-a-nestjs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Capítulo 2 - Introducción a [NestJS]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capitulo-3---el-servidor-nestjs-de-la-aplicacion-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Capítulo 3 - El servidor [NestJS] de la aplicación [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Capítulo 4 - Introducción a [React]
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="capitulo-4---introduccion-a-react.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Capítulo 4 - Introducción a [React]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#51-fuentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Fuentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#52-de-angularjs-1x-a-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. De AngularJS 1.x a [React]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#53-el-concepto-de-aplicacion-react-la-aplicacion-de-pagina-unica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. El concepto de aplicación [React]: la “aplicación de página única”
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#54-componentes-funciones-y-jsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Componentes: funciones y [JSX]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#55-el-estado-local-usestate-y-las-props" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. El estado local: [useState] y las props
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#56-sin-modulos-cada-archivo-ya-es-autonomo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6. Sin módulos: cada archivo ya es autónomo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#57-compartir-logica-hooks-personalizados-y-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7. Compartir lógica: hooks personalizados y [Context]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#58-comunicacion-con-el-servidor-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8. Comunicación con el servidor: [fetch]
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#59-renderizado-condicional-y-listas-jsx-puro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9. Renderizado condicional y listas: [JSX] puro
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#510-resumen-equivalencias-angular-react" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.10. Resumen: equivalencias [Angular] -&gt; [React]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capitulo-5---el-cliente-react-de-la-aplicacion-rdvmedecins.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Capítulo 5 - El cliente [React] de la aplicación [RdvMedecins]
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capitulo-6---conclusion-y-proximos-pasos.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Capítulo 6 - Conclusión y próximos pasos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><span id="chapitre-4-introduction-a-react" name="chapitre-4-introduction-a-react" class="odt-bookmark-anchor"></span></p>
+<h1 id="5-capitulo-4-introduccion-a-react">5. <span style="color: #2e74b5">Capítulo 4 - Introducción a [React]</span></h1>
+<p><span id="sources-2" name="sources-2" class="odt-bookmark-anchor"></span></p>
+<h2 id="51-fuentes">5.1. <span style="color: #2e74b5">Fuentes</span></h2>
+<p>Este capítulo se basa en la documentación oficial de <em><mark style="background-color: #fff5ce">[React]</mark></em>: react.dev.</p>
+<p><span id="dangularjs-1x-a-react" name="dangularjs-1x-a-react" class="odt-bookmark-anchor"></span></p>
+<h2 id="52-de-angularjs-1x-a-react">5.2. <span style="color: #2e74b5">De AngularJS 1.x a [React]</span></h2>
+<p>El documento original (2014) utilizaba AngularJS 1.x: un framework de JavaScript (todavía sin TypeScript) organizado en torno a $scope, controladores, directivas (ng-repeat, ng-if…) y un mecanismo de detección de cambios basado en el “ciclo de digestión” ($digest) y en la observación de variables ($watch).</p>
+<p><em><mark style="background-color: #fff5ce">[React] </mark></em>(creado por Meta, 2013) no es un framework completo como AngularJS 1.x o [Angular]: es una <strong>biblioteca</strong> dedicada a una única tarea: construir interfaces a partir de <strong>componentes</strong>. Por sí sola, no proporciona ni un cliente HTTP, ni un enrutador, ni un mecanismo de inyección de dependencias; por eso el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> de este capítulo se apoya, para estos fines, en la API nativa del navegador (fetch(), véase más abajo) y en un mecanismo propio de <em><mark style="background-color: #fff5ce">[React]</mark></em>, el <strong>Context</strong>, en lugar de módulos dedicados como <em><mark style="background-color: #fff5ce">[HttpClient] </mark></em>o el enrutador de <em><mark style="background-color: #fff5ce">[Angular]</mark></em>. Este capítulo presenta estos conceptos uno por uno, con ejemplos breves independientes del caso de estudio; el capítulo siguiente los mostrará en acción en el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> completo, en <em><mark style="background-color: #fff5ce">[React]</mark></em> 19.</p>
+<p><span id="le-principe-dune-application-react-le-single-page-application" name="le-principe-dune-application-react-le-single-page-application" class="odt-bookmark-anchor"></span></p>
+<h2 id="53-el-concepto-de-aplicacion-react-la-aplicacion-de-pagina-unica">5.3. <span style="color: #2e74b5">El concepto de aplicación [React]: la “aplicación de página única”</span></h2>
+<p>Una aplicación <em><mark style="background-color: #fff5ce">[React]</mark></em> es, como una aplicación <em><mark style="background-color: #fff5ce">[Angular]</mark></em>, una aplicación de página única (SPA): el servidor entrega al navegador una sola página (HTML), que contiene un único archivo (JavaScript) con toda la lógica de la aplicación. Una vez cargada esta página, nunca vuelve a haber una recarga completa de página: cada interacción del usuario (cambio de vistas, envío de un formulario, etc.) la maneja el código JavaScript ya presente en el navegador, que actualiza la pantalla y se comunica con el servidor en segundo plano mediante solicitudes HTTP asíncronas (casi siempre con JSON). Este ya era el principio del documento original con AngularJS 1.x, así como de la variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso; no ha cambiado: solo difiere, de una variante a otra, la biblioteca que gestiona la pantalla.</p>
+<p><span id="les-composants-fonctions-et-jsx" name="les-composants-fonctions-et-jsx" class="odt-bookmark-anchor"></span></p>
+<h2 id="54-componentes-funciones-y-jsx">5.4. <span style="color: #2e74b5">Componentes: funciones y [JSX]</span></h2>
+<p>Como en <em><mark style="background-color: #fff5ce">[Angular]</mark></em>, un <strong>componente</strong> es la unidad básica de una aplicación <em><mark style="background-color: #fff5ce">[React]</mark></em>: genera lo que se debe mostrar en pantalla a partir de su estado actual y de las propiedades que recibe. La diferencia está en la forma: un componente <em><mark style="background-color: #fff5ce">[Angular]</mark></em> es una <strong>clase</strong> decorada, asociada a una plantilla HTML separada (o en línea); un componente <em><mark style="background-color: #fff5ce">[React]</mark></em> es simplemente una <strong>función de JavaScript</strong> (o TypeScript)  que devuelve <em><mark style="background-color: #fff5ce">[JSX]</mark></em>, una sintaxis que se parece a HTML, pero que en realidad el compilador transforma en llamadas ordinarias a funciones de JavaScript.</p>
+<p>A continuación se muestra un componente muy pequeño, independiente del caso de estudio, equivalente a <em><mark style="background-color: #fff5ce">[CounterComponent] </mark></em>presentado en la variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// Counter.tsx</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Counter</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">value</span><span class="p">,</span><span class="w"> </span><span class="nx">setValue</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">increment</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nx">setValue</span><span class="p">((</span><span class="nx">v</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">v</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="o">&lt;&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Value</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">value</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">increment</span><span class="p">}</span><span class="o">&gt;+</span><span class="mf">1</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/&gt;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="p">);</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Comentemos este código:</p>
+<ul>
+  <li>línea 3: <b>import { useState } from &#x27;react&#x27;; </b>— <i><mark style="background-color: #fff5ce">[useState] </mark></i>es un <b>hook de </b><i><mark style="background-color: #fff5ce">[React]</mark></i>: una función especial (reconocible por su prefijo &quot;use&quot;) que permite a una función de componente mantener un estado que persiste de un renderizado al siguiente; un papel comparable al de un signal en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>, o al de $scope/el controlador de AngularJS;
+  </li>
+  <li>línea 5: <b>export function Counter() { </b>— un componente de <i><mark style="background-color: #fff5ce">[React]</mark></i> es una función normal, exportada: no hay decorador ni selector personalizado (HTML) que declarar (a diferencia de <i><mark style="background-color: #fff5ce">[@Component]</mark></i>({ selector: … }) en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>); se usa directamente como una etiqueta con su propio nombre, &lt;Counter /&gt;, dentro del <i><mark style="background-color: #fff5ce">[JSX] </mark></i>de un componente padre;
+  </li>
+  <li>línea 6: <b>const [value, setValue] = useState(0); </b>— <i><mark style="background-color: #fff5ce">[useState]</mark></i>(0) crea un valor de estado inicializado en 0 y devuelve un <b>par</b>: el valor actual (value) y una función para reemplazarlo (setValue). La desestructuración del arreglo (<i><mark style="background-color: #fff5ce">[value, setValue]</mark></i>) es simplemente una convención de nomenclatura: nada impide nombrar estos dos elementos de otra manera;
+  </li>
+  <li>líneas 8–10: <b>setValue((v) =&gt; v + 1); </b>— llamar a setValue no modifica `value` en su lugar (los valores de estado de <i><mark style="background-color: #fff5ce">[React] </mark></i>son inmutables): indica a <i><mark style="background-color: #fff5ce">[React]</mark></i> que vuelva a dibujar el componente con el nuevo valor calculado a partir del anterior, exactamente como lo hace mySignal.update(v =&gt; …) en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>;
+  </li>
+  <li>líneas 13–16: <b>&lt;p&gt;Value: {value}&lt;/p&gt; </b>— el <i><mark style="background-color: #fff5ce">[JSX] </mark></i>que devuelve la función ES la plantilla: las llaves { } insertan una expresión de JavaScript (aquí, el valor actual), con el mismo papel que las dobles llaves {{ value() }} en la plantilla de <i><mark style="background-color: #fff5ce">[Angular]</mark></i>, pero sin los paréntesis de llamada: `value` es el dato en sí, no un signal que deba interpretarse al llamarlo.
+  </li>
+</ul>
+
+<p>La etiqueta &lt;&gt; … &lt;/&gt; (un “fragmento”) agrupa varios elementos sin agregar a su alrededor un nodo HTML superfluo; es un detalle técnico de <em><mark style="background-color: #fff5ce">[JSX]</mark></em>, que exige que una función de componente devuelva un único elemento raíz.</p>
+<p><span id="letat-local-usestate-et-les-props" name="letat-local-usestate-et-les-props" class="odt-bookmark-anchor"></span></p>
+<h2 id="55-el-estado-local-usestate-y-las-props">5.5. <span style="color: #2e74b5">El estado local: [useState] y las props</span></h2>
+<p>En AngularJS 1.x, <em><mark style="background-color: #fff5ce">[Angular] </mark></em>detectaba que un dato había cambiado mediante un ciclo de verificación sistemático ($digest), que en la variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso se reemplazó por <strong>signals</strong> (signal(), computed()). <em><mark style="background-color: #fff5ce">[React] </mark></em>adopta un tercer enfoque, que parece más simple: un componente vuelve a ejecutar por completo su función (y por lo tanto recalcula todo su <em><mark style="background-color: #fff5ce">[JSX]</mark></em>) cada vez que cambia uno de sus valores <em><mark style="background-color: #fff5ce">[useState]</mark></em>; <em><mark style="background-color: #fff5ce">[React] </mark></em>compara entonces el resultado con el renderizado anterior y modifica únicamente lo que realmente cambió en el DOM real del navegador (una técnica llamada reconciliación, o “DOM virtual”). A diferencia de los signals, un estado <em><mark style="background-color: #fff5ce">[useState]</mark></em> no “sabe” por sí mismo qué depende de él: el mecanismo de re-renderizado de todo el componente se encarga de ello, lo cual es más simple de razonar pero, en teoría, algo más costoso en aplicaciones muy grandes, una compensación deliberada en <em><mark style="background-color: #fff5ce">[React]</mark></em>.</p>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Función</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><b>Papel</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nx">useState</span><span class="p">(</span><span class="nx">initialValue</span><span class="p">)</span>
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">crea un estado local y devuelve el par <i><mark style="background-color: #fff5ce">[value, setValue]; setValue</mark></i> vuelve a dibujar el componente con el nuevo valor</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>setValue(newValue)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">reemplaza el valor del estado por un valor calculado previamente</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nx">setValue</span><span class="p">(</span><span class="nx">v</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">...)</span>
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">calcula el nuevo valor a partir del anterior (véase increment() más arriba)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nx">useMemo</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="p">[</span><span class="nx">deps</span><span class="p">])</span>
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">recalcula un valor derivado solo cuando cambia uno de los elementos de <i><mark style="background-color: #fff5ce">[deps] </mark></i>; el equivalente conceptual de computed() en <i><mark style="background-color: #fff5ce">[Angular]</mark></i></div></td></tr></table>
+
+<p>Dos mecanismos complementan a <em><mark style="background-color: #fff5ce">[useState] </mark></em>para que un componente se comunique con su padre; los encontraremos constantemente en el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> (capítulo siguiente), exactamente donde estaban input()/output() en <em><mark style="background-color: #fff5ce">[Angular]</mark></em>:</p>
+<ul>
+  <li><b>props</b>: un componente <i><mark style="background-color: #fff5ce">[React]</mark></i> recibe sus entradas como simples parámetros de función (un objeto desestructurado, { doctors, onSearch }); el equivalente directo de input.required&lt;<i><mark style="background-color: #fff5ce">Doctor[]</mark></i>&gt;() en <i><mark style="background-color: #fff5ce">[Angular]</mark></i> y, conceptualmente, de un atributo de directiva de AngularJS 1.x;
+  </li>
+  <li><b>props de callback</b>: una función que proporciona el padre (onSearch: (criteria) =&gt; void), que se pasa como prop y que luego el hijo llama en el momento oportuno; el equivalente directo de output&lt;...&gt;() (y de su método .emit(value)) en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>, y de los eventos personalizados ($emit) de AngularJS 1.x.
+  </li>
+</ul>
+
+<p><span id="pas-de-modules-chaque-fichier-est-deja-autonome" name="pas-de-modules-chaque-fichier-est-deja-autonome" class="odt-bookmark-anchor"></span></p>
+<h2 id="56-sin-modulos-cada-archivo-ya-es-autonomo">5.6. <span style="color: #2e74b5">Sin módulos: cada archivo ya es autónomo</span></h2>
+<p>Una aplicación AngularJS 1.x se organizaba en módulos (angular.module(...)). <em><mark style="background-color: #fff5ce">[Angular] </mark></em>adoptó primero esta idea en una forma más rígida (el NgModule), antes de proponer los componentes standalone como modo predeterminado; una simplificación que la variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso ya ha adoptado. <em><mark style="background-color: #fff5ce">[React] </mark></em>nunca necesitó este concepto: un archivo .tsx exporta un componente con la palabra clave export del propio lenguaje JavaScript, y otro archivo lo usa con un simple import; los módulos estándar de ECMAScript, sin ninguna capa adicional propia de la biblioteca de interfaces:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="c1">// Parent.tsx</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Counter</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'./Counter'</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Parent</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">      </span><span class="o">&lt;</span><span class="nx">Counter</span><span class="w"> </span><span class="o">/&gt;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">  </span><span class="p">);</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Este es el estilo que se utiliza en todo el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> (capítulo siguiente): no hay archivos *.module.ts ni decoradores con <code>imports:</code> <em><mark style="background-color: #fff5ce">[...] </mark></em>que mantener al día; una simplificación adicional respecto de AngularJS 1.x, de [Angular] con NgModule, e incluso de los componentes standalone de <em><mark style="background-color: #fff5ce">[Angular] </mark></em>(que, sin embargo, siguen enumerando sus dependencias en <code>imports</code>: <em><mark style="background-color: #fff5ce">[...] </mark></em>del decorador <em><mark style="background-color: #fff5ce">[@Component]</mark></em>).</p>
+<p><span id="partager-de-la-logique-hooks-personnalises-et-context" name="partager-de-la-logique-hooks-personnalises-et-context" class="odt-bookmark-anchor"></span></p>
+<h2 id="57-compartir-logica-hooks-personalizados-y-context">5.7. <span style="color: #2e74b5">Compartir lógica: hooks personalizados y [Context]</span></h2>
+<p>Como en <em><mark style="background-color: #fff5ce">[NestJS] </mark></em>(capítulo 2), el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins] </mark></em>necesita lógica compartida entre varios componentes: comunicarse con el servidor, identificar al usuario que inició sesión y cambiar el idioma. <em><mark style="background-color: #fff5ce">[Angular] </mark></em>responde a esta necesidad con <strong>servicios</strong> inyectables (<em><mark style="background-color: #fff5ce">[@Injectable]</mark></em>({ providedIn: &#x27;root&#x27; }) + inject(...)), el sucesor directo de .service()/.factory() de AngularJS 1.x. <em><mark style="background-color: #fff5ce">[React] </mark></em>no tiene un mecanismo integrado de inyección de dependencias; el uso moderno combina dos herramientas ya comentadas más arriba:</p>
+<ul>
+  <li>un <b>hook personalizado</b>, una función cuyo nombre comienza con `use` y que puede a su vez llamar a otros hooks (<i><mark style="background-color: #fff5ce">[useState]</mark></i>, [useContext]…), encapsula lógica reutilizable, igual que un método de servicio en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>;
+  </li>
+  <li>el <b>Context </b>(<i><mark style="background-color: #fff5ce">[React.createContext]</mark></i>) comparte un valor (estado + funciones) con todo un subárbol de componentes sin tener que pasarlo manualmente, prop por prop, a través de cada nivel intermedio; el papel que antes cumplía providedIn: &#x27;root&#x27; en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>: una única instancia, disponible dondequiera que se necesite.
+  </li>
+</ul>
+
+<p>Un breve ejemplo, independiente del caso de estudio, equivalente en concepto a <em><mark style="background-color: #fff5ce">[MyService] </mark></em>presentado en la variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">// my-context.tsx</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createContext</span><span class="p">,</span><span class="w"> </span><span class="nx">useContext</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">ReactNode</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">'react'</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kd">interface</span><span class="w"> </span><span class="nx">MyContextValue</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">  </span><span class="nx">greet</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="p">}</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MyContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createContext</span><span class="o">&lt;</span><span class="nx">MyContextValue</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="o">&gt;</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">MyProvider</span><span class="p">({</span><span class="w"> </span><span class="nx">children</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">children</span><span class="o">:</span><span class="w"> </span><span class="kt">ReactNode</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">MyContextValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">greet</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="s1">'Hello'</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">MyContext</span><span class="p">.</span><span class="nx">Provider</span><span class="w"> </span><span class="nx">value</span><span class="o">=</span><span class="p">{</span><span class="nx">value</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">children</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/MyContext.Provider&gt;;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="p">}</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="k">export</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">useMyContext</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">MyContextValue</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useContext</span><span class="p">(</span><span class="nx">MyContext</span><span class="p">);</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">context</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">'useMyContext() must be called under a &lt;MyProvider&gt;'</span><span class="p">);</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">context</span><span class="p">;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Comentemos este código:</p>
+<ul>
+  <li>línea 8: <b>const MyContext = createContext&lt;MyContextValue | null&gt;(null);</b> — crea el Context propiamente dicho; `null` es el valor predeterminado, que se usa solo si no hay un `&lt;MyProvider&gt;` más arriba en el árbol: un error de programación que se detecta en la línea 17;
+  </li>
+  <li>líneas 10–13: <b>&lt;MyContext.Provider value={value}&gt;{children}&lt;/MyContext.Provider&gt; </b>— el componente Provider pone el valor a disposición de todos sus descendientes ({children}); es el que se coloca, una sola vez, cerca de la raíz de la aplicación (véase main.tsx del cliente <i><mark style="background-color: #fff5ce">[RdvMedecins]</mark></i>, en el capítulo siguiente); el equivalente del “registro” implícito que realiza providedIn: &#x27;root&#x27; en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>;
+  </li>
+  <li>líneas 15–21: <b>export function useMyContext(): MyContextValue { </b>— el hook personalizado que da acceso al valor del Context; es lo que llaman los componentes (const my = useMyContext();), exactamente como habrían llamado a inject(MyService) en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>.
+  </li>
+</ul>
+
+<p><span id="communiquer-avec-le-serveur-fetch" name="communiquer-avec-le-serveur-fetch" class="odt-bookmark-anchor"></span></p>
+<h2 id="58-comunicacion-con-el-servidor-fetch">5.8. <span style="color: #2e74b5">Comunicación con el servidor: [fetch]</span></h2>
+<p><em><mark style="background-color: #fff5ce">[HttpClient] </mark></em>(<em><mark style="background-color: #fff5ce">[Angular]</mark></em>) era el sucesor directo del servicio $http de AngularJS 1.x que utilizaba el documento original. Dado que <em><mark style="background-color: #fff5ce">[React] </mark></em>es solo una biblioteca de interfaces, no proporciona ningún cliente HTTP: el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins] </mark></em>usa directamente <em><mark style="background-color: #fff5ce">[fetch]</mark></em>, la API estándar del navegador (disponible sin ninguna dependencia adicional):</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">httpResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">'http://localhost:8080/hello'</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">httpResponse</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">};</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>Una diferencia importante con $http y <em><mark style="background-color: #fff5ce">[HttpClient]</mark></em>: <em><mark style="background-color: #fff5ce">[fetch] </mark></em>devuelve directamente una Promise (el mecanismo asíncrono estándar de JavaScript), no un Observable: ni biblioteca RxJS, ni .subscribe({ next, error }), ni .pipe(map(...)). Se puede usar con .then(...) o, para mayor legibilidad, con async/await (como se mostró más arriba, que suspende la ejecución de la función hasta que la promesa se resuelve, sin bloquear el resto de la aplicación). Un error de red o una respuesta de error se maneja entonces con un simple bloque try/catch, en lugar de con la rama de error de una suscripción de RxJS.</p>
+<p>El hook useAppointmentService() del cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> (capítulo siguiente) encapsula sistemáticamente esta llamada a <em><mark style="background-color: #fff5ce">[fetch]</mark></em> seguida de .json(), por una razón específica que se explicará en ese punto (la envoltura <em><mark style="background-color: #fff5ce">[ServerResponse]&lt;T&gt;</mark></em> común a todas las respuestas del servidor).</p>
+<p><span id="le-rendu-conditionnel-et-les-listes-du-jsx-pur" name="le-rendu-conditionnel-et-les-listes-du-jsx-pur" class="odt-bookmark-anchor"></span></p>
+<h2 id="59-renderizado-condicional-y-listas-jsx-puro">5.9. <span style="color: #2e74b5">Renderizado condicional y listas: [JSX] puro</span></h2>
+<p>AngularJS 1.x utilizaba directivas estructurales (ng-if, ng-repeat) para mostrar un elemento de forma condicional o repetir un bloque de plantilla por cada elemento de una lista. La variante <em><mark style="background-color: #fff5ce">[Angular]</mark></em> de este curso usa la sintaxis integrada <em><mark style="background-color: #fff5ce">[@if]/[@for]</mark></em>. <em><mark style="background-color: #fff5ce">[React] </mark></em>no tiene una sintaxis de plantilla separada que aprender: el <em><mark style="background-color: #fff5ce">[JSX] </mark></em>que devuelve un componente ES JavaScript, y el control de flujo se expresa con operadores ordinarios de JavaScript:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="p">{</span><span class="nx">loggedInUser</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Welcome</span><span class="o">!&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">  </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Please</span><span class="w"> </span><span class="nx">log</span><span class="w"> </span><span class="ow">in</span><span class="p">.</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="p">)}</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">  </span><span class="p">{</span><span class="nx">itemList</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">    </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/li&gt;</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">  </span><span class="p">))}</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="o">&lt;</span><span class="err">/ul&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Comentemos este código:</p>
+<ul>
+  <li>líneas 1–5: <b>loggedInUser ? (...) : (...) </b>— el operador ternario de JavaScript reemplaza a <i><mark style="background-color: #fff5ce">[@if]/[@else]</mark></i> (<i><mark style="background-color: #fff5ce">[Angular]</mark></i>) y a ng-if (AngularJS 1.x): la condición determina cuál de las dos expresiones <i><mark style="background-color: #fff5ce">[JSX] </mark></i>se devuelve. Para una condición sin alternativa, basta con el operador <b>&amp;&amp;</b>: {condition &amp;&amp; &lt;p&gt;...&lt;/p&gt;} no muestra absolutamente nada si la condición es falsa (este es el estilo que se usa, por ejemplo, en el banner ADMIN/USER del componente App del cliente <i><mark style="background-color: #fff5ce">[RdvMedecins]</mark></i>, que se analiza en el capítulo siguiente);
+  </li>
+  <li>línea 8: <b>itemList.map((item) =&gt; (...)) </b>— .map() (un método estándar de arreglos de JavaScript) reemplaza a <i><mark style="background-color: #fff5ce">[@for]</mark></i> (<i><mark style="background-color: #fff5ce">[Angular]</mark></i>) y a ng-repeat (AngularJS 1.x): transforma cada elemento del arreglo en un elemento <i><mark style="background-color: #fff5ce">[JSX]</mark></i>;
+  </li>
+  <li>línea 9: <b>key={item.id} </b>(obligatorio en una lista <i><mark style="background-color: #fff5ce">[JSX]</mark></i>) — le indica a <i><mark style="background-color: #fff5ce">[React] </mark></i>cómo reconocer un elemento que ya se mostró cuando vuelve a dibujar la lista; cumple exactamente el mismo papel que track item.id después de <i><mark style="background-color: #fff5ce">[@for] </mark></i>en <i><mark style="background-color: #fff5ce">[Angular]</mark></i>.
+  </li>
+</ul>
+
+<p><span id="recapitulatif-correspondances-angular-react" name="recapitulatif-correspondances-angular-react" class="odt-bookmark-anchor"></span></p>
+<h2 id="510-resumen-equivalencias-angular-react">5.10. <span style="color: #2e74b5">Resumen: equivalencias [Angular] -&gt; [React]</span></h2>
+<table class="odt-table" style="border-collapse: collapse; width: 100%; margin-bottom: 1em;"><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[Angular] </mark></i><i><b>(versión anterior de este curso)</b></i></div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[React] </mark></i><i><b>(2026)</b></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Standalone components ([@Component])
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Componentes funcionales</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Signals (signal(), input(), output(), computed())
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[useState]</mark></i>(), props, props de callback, <i><mark style="background-color: #fff5ce">[useMemo]</mark></i>()</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>effect()
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[useEffect]</mark></i>()</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Separate template (.html) + decorator (.ts)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[JSX] </mark></i>incrustado en el componente (.tsx)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>[@if], [@for]
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Operador ternario / &amp;&amp;, .map()</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Injectable services ([@Injectable]({ providedIn: 'root' })) + inject()
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Hooks personalizados + <i><mark style="background-color: #fff5ce">[Context]</mark></i></div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[HttpClient] (RxJS Observables)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[fetch] </mark></i>(Promises nativas)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>[@angular/router] (empty routing table)
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0">Sin enrutador (misma conclusión, llevada un paso más allá)</div></td></tr><tr><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div markdown="block">
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Angular CLI / [@angular/build]
+</code></pre></div>
+</div></td><td style="border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left;"><div style="margin:0 0 0.5em 0"><i><mark style="background-color: #fff5ce">[Vite]</mark></i></div></td></tr></table>
+
+<p>Estos conceptos bastan para abordar el cliente <em><mark style="background-color: #fff5ce">[RdvMedecins]</mark></em> en el capítulo siguiente: no obstante, cada nuevo uso se volverá a explicar allí, a medida que avance el código, en el punto exacto en que aparece.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner">
+
+      <div>
+        <a href="https://stahe.github.io" target="_blank">
+          https://stahe.github.io
+        </a>
+        <br>
+        Este tutorial, escrito por la IA <strong>Claude</strong> de Anthropic y revisado por <strong>Serge Tahé</strong>, se pone a disposición del público bajo los términos de la
+        <em>licencia Creative Commons Atribución – No Comercial –
+        Compartir Igual 3.0 No adaptada</em>.
+
+      </div>
+
+    </div>
+  </div>
+
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.indexes", "navigation.expand", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="javascripts/focus.js"></script>
+      
+    
+  </body>
+</html>
